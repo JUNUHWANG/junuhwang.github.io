@@ -101,11 +101,11 @@ analytics:
 
 # Site Author
 author:
-  name             : "Your Name"
+  name             : 황준우(JUNU.HWANG)
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "I am an **amazing** person."
-  location         : "Somewhere"
-  email            :
+  bio              : To be Data analysist
+  location         : Seoul
+  email            : ghkdwnsdn3@gmail.com
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
