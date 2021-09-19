@@ -36,14 +36,7 @@ tags:
     - **cabin** : 승무원 여부
     - **embarked** : 승선한 항구 이름 (C = Cherbourg, Q = Queenstown, S = Southampton)
 
-## 데이터 확인 및 항목 추가
-- 결측치 존재 여부 확인
-    * **age**, **cabin**, **embarked** 3가지 항목에서 결측치 확인
-    * **age** 열의 경우, 결측치가 전체의 20% 이므로 잔여 데이터로 추정 가능할 것으로 판단
-    * **cabin** 열의 경우, 결측치가 전체이 77%를 차지, 잔여 데이터로 추정이 불가능할 것으로 판단 -> 제거 진행
-    * **embarked** 열의 경우, 2개의 data만 결측된 것으로 확인 -> 상관 계수 확인 후 결정 예정
-    ![image](https://user-images.githubusercontent.com/88296152/133918871-4b44806c-a2b0-4582-8ef1-e6543b15ce4c.png)
-
+## 데이터 확인 및 분류 항목 추가
 - 객실 등급에 따른 티켓 가격 차이에 따른 정확한 티켓 가격 산정 후 추가
     * **pclass**와 **fare**를 비교한 결과 동일 객실 등급에도 가격 차이가 많이 발생한 것으로 확인
     * **pclass**와 **ticket**, **fare** 를 Groupby로 묶어서 비교한 결과 동일 티켓 번호 확인
@@ -61,3 +54,23 @@ tags:
       (혼자 왔을 경우, 위 항목들은 0으로 집계됨.)
     ![image](https://user-images.githubusercontent.com/88296152/133919591-3d108846-a872-4424-acdc-91e8ea1d5e47.png)
 
+## 결측치 Data 추가
+- 결측치 존재 여부 확인
+    * **age**, **cabin**, **embarked** 3가지 항목에서 결측치 확인
+    * **age** 열의 경우, 결측치가 전체의 20% 이므로 잔여 데이터로 추정 가능할 것으로 판단
+    * **cabin** 열의 경우, 결측치가 전체이 77%를 차지, 잔여 데이터로 추정이 불가능할 것으로 판단 -> 제거 진행
+    * **embarked** 열의 경우, 2개의 data만 결측된 것으로 확인 -> 상관 계수 확인 후 결정 예정
+    ![image](https://user-images.githubusercontent.com/88296152/133918871-4b44806c-a2b0-4582-8ef1-e6543b15ce4c.png)
+
+- **age** 결측치 채우기
+    * 이름 사이에 있는 계급 호칭들이 나이와 연관이 있다고 판단함  
+      (군 고위직 및 미혼 기혼 여부, 고령자 및 어린 아이에만 쓰는 호칭은 나이 추정에 영향이 있다고 판단)
+    ![image](https://user-images.githubusercontent.com/88296152/133919929-e91b7a7c-cdef-4b97-827d-f01caa616306.png)
+    
+    * **name** 항목 내 계급 호칭만 별로 분리작업 진행
+    ![image](https://user-images.githubusercontent.com/88296152/133920101-1085da3f-06cd-4522-893b-2b8fcea07ae8.png)
+    ![image](https://user-images.githubusercontent.com/88296152/133920131-f72dc4e2-335f-45a8-8829-146c4cd9dbca.png)
+    
+    * 계급 호칭에 따라 군인 여부(**Military**) / 귀족 여부(**Nobility**) / 나이에 따른 호칭(**est_age**)에 대한 열을 추가하고 분류 작업 진행  
+    ![image](https://user-images.githubusercontent.com/88296152/133920029-3e2f088a-6f94-43e9-b8bd-b86d9fd59fb0.png)
+    
