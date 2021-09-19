@@ -45,6 +45,13 @@ tags:
     ![image](https://user-images.githubusercontent.com/88296152/133918461-05de9674-abd0-4e96-99ea-163879760b2d.png)
 
 - 객실 등급에 따른 티켓 가격 차이
+    * **pclass**와 **fare**를 비교한 결과 동일 객실 등급에도 가격 차이가 많이 발생한 것으로 확인
+    * **pclass**와 **ticket**, **fare** 를 Groupby로 묶어서 비교한 결과 동일 티켓 번호 확인
+    * **ticket counts** 열을 추가하여 동일한 **ticket** 항목의 수 집계
+    * **fare**을 **ticket counts**로 나누어 정확한 티켓 가격 집계  
+      (**Fare per ticket** 열 추가)
+    ![image](https://user-images.githubusercontent.com/88296152/133918723-39af2669-a7ba-4d4e-9ef7-4b37ff64cdc0.png)
+ 
 - 단체 항목 추가
     * 가족 / 지인과 함께 온 경우 그룹으로 확인하여 추가
     * 지인의 경우, **ticket**가 동일한 사람들을 지인으로 추정함 
