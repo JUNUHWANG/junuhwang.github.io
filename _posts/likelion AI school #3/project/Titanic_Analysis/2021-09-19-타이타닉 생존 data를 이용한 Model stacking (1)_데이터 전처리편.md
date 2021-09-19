@@ -44,7 +44,7 @@ tags:
     * **embarked** 열의 경우, 2개의 data만 결측된 것으로 확인 -> 상관 계수 확인 후 결정 예정
     ![image](https://user-images.githubusercontent.com/88296152/133918461-05de9674-abd0-4e96-99ea-163879760b2d.png)
 
-- 객실 등급에 따른 티켓 가격 차이
+- 객실 등급에 따른 티켓 가격 차이에 따른 정확한 티켓 가격 산정 후 추가
     * **pclass**와 **fare**를 비교한 결과 동일 객실 등급에도 가격 차이가 많이 발생한 것으로 확인
     * **pclass**와 **ticket**, **fare** 를 Groupby로 묶어서 비교한 결과 동일 티켓 번호 확인
     * **ticket counts** 열을 추가하여 동일한 **ticket** 항목의 수 집계
