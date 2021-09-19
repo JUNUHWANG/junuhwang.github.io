@@ -42,7 +42,7 @@ tags:
     * **age** 열의 경우, 결측치가 전체의 20% 이므로 잔여 데이터로 추정 가능할 것으로 판단
     * **cabin** 열의 경우, 결측치가 전체이 77%를 차지, 잔여 데이터로 추정이 불가능할 것으로 판단 -> 제거 진행
     * **embarked** 열의 경우, 2개의 data만 결측된 것으로 확인 -> 상관 계수 확인 후 결정 예정
-    ![image](https://user-images.githubusercontent.com/88296152/133918461-05de9674-abd0-4e96-99ea-163879760b2d.png)
+    ![image](https://user-images.githubusercontent.com/88296152/133918871-4b44806c-a2b0-4582-8ef1-e6543b15ce4c.png)
 
 - 객실 등급에 따른 티켓 가격 차이에 따른 정확한 티켓 가격 산정 후 추가
     * **pclass**와 **fare**를 비교한 결과 동일 객실 등급에도 가격 차이가 많이 발생한 것으로 확인
@@ -53,5 +53,11 @@ tags:
     ![image](https://user-images.githubusercontent.com/88296152/133918723-39af2669-a7ba-4d4e-9ef7-4b37ff64cdc0.png)
  
 - 단체 항목 추가
-    * 가족 / 지인과 함께 온 경우 그룹으로 확인하여 추가
-    * 지인의 경우, **ticket**가 동일한 사람들을 지인으로 추정함 
+    * 지인 / 가족과 함께 온 경우 그룹으로 확인하여 추가
+    * 지인의 경우, **ticket**에 있는 티켓의 번호가 동일한 사람들을 지인으로 추정함  
+      (**ticket counts** 항목이 1 이상이면 지인으로 추정)
+    * 가족의 경우, **sibsp**와 **parch**가 1 이상일 경우 그룹으로 산정함
+    * **group** 열을 추가하고, **ticket counts**와 **sibsp**와 **parch** 합이 1 이상일 경우 그룹으로 온 것으로 판단  
+      (혼자 왔을 경우, 위 항목들은 0으로 집계됨.)
+    ![image](https://user-images.githubusercontent.com/88296152/133919591-3d108846-a872-4424-acdc-91e8ea1d5e47.png)
+
