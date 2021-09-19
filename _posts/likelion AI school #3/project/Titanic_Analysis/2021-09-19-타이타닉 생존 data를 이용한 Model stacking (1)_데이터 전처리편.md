@@ -12,6 +12,7 @@ tags:
   - ML
   - Data analysis
   - Modeling
+  - Titanic data
 ---
 # 내용 작성중
 
@@ -74,3 +75,22 @@ tags:
     * 계급 호칭에 따라 군인 여부(**Military**) / 귀족 여부(**Nobility**) / 나이에 따른 호칭(**est_age**)에 대한 열을 추가하고 분류 작업 진행  
     ![image](https://user-images.githubusercontent.com/88296152/133920029-3e2f088a-6f94-43e9-b8bd-b86d9fd59fb0.png)
     
+    * 위 Data를 이용하여 **age**열 결측치 추가를 위한 회귀분석 진행  
+      (8개 모델 중 MSE가 가장 낮은 모델을 이용하여 결측치 추가)
+    ![image](https://user-images.githubusercontent.com/88296152/133920643-b29cbe45-e5c6-4191-93fd-bf59e6b8ed04.png)
+
+    * 분석 결과 선형회귀 모형이 MSE가 가장 낮게 나와 해당 모델을 이용하여 결측치 추가
+    ![image](https://user-images.githubusercontent.com/88296152/133920748-fc19630c-edd1-4a2f-8ce7-f6707ee62c3f.png)
+
+
+## 데이터 전치리 과정 중 느낀 점
+- 팀 프로젝트 기간 중 주말 제외한 3일 중 2일을 데이터 전처리에 사용함
+- 최종 모델 구현하기 전 데이터 전처리 작업이 중요하고 많은 시간이 소요되는 것을 깨달음
+- 시간이 부족하여 팀 내 논의했던 다양한 방법을 시도하지 못하여 아쉬움이 남았음
+
+## 데이터 전처리 진행 시 제안 사항
+- **Age** 결측값 추정 시 여러 방법에 대해 논의를 진행함
+- 하기 **Age** 관련 상관계수를 확인해보면 계급 호칭에 따른 나이 분류가 영향이 큰 것을 확인할 수 있음(약 0.45)
+  ![image](https://user-images.githubusercontent.com/88296152/133920349-29a233e7-6c7b-4b92-94f1-e6213ad03c83.png)
+- 결측값 항목의 Data를 확인해보면 일부 계급 호칭만 포함되어 있음
+- 해당 계급 호칭이 들어간 Data만 이용하여 나이를 추정하면 정확도를 높힐 수 있을 것으로 판단함
