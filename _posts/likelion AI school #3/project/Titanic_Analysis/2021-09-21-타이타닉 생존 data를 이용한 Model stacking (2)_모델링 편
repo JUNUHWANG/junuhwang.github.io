@@ -20,12 +20,15 @@ tags:
 
 ## 데이터 모델링 전 사전 작업
 - Y값 설정 : 생존여부를 Y값으로 설정하고 나머지는 X값으로 이용할 예정
-- Categorical / Numerical 항목 분류하여 StandardScaler 적용 후 모델 fit
+- Categorical / Numerical 항목 분류하여 일부 모델에서는 StandardScaler 적용 후 모델 fit
 - 사용할 모델을 선정하고, 해당 모델의 특징 및 적용에 필요한 데이터 종류 확인 필요
 
-## 사용할 모델
+## 사용할 모델의 특징
 - Logistic Regression
-  * 
+  * Y값(종속변수)가 이항형일 때 사용
+  * Y값이 발생할 확률에 대해 추정하고 결정하는 모델
+  * 데이터의 정규분포도에 따라 결과 값에 영향을 받으므로, Standardscaler을 사용하여 fit 진행
+  * C(Cost-function) 값을 Hyperparameter로 받음으로써 모델의 적합 여부에 영향을 미침
 - KNN
 - Grandient Boosting
 - Light BGM
