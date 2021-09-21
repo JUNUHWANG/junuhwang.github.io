@@ -32,7 +32,10 @@ tags:
   * Cost-fuction은, Sigmoid function 에서 나오는 Cross-entropy function으로,  
     예측값의 분포와 실제값의 분포를 비교하여 그 차이로 성능 지표로 활용
 - KNN
-  * 
+  * k값을 hyper-params로 받음
+  * 가장 가까운 k개의 데이터를 살펴, 가장 많이 속한 클러스터로 분류해주는 알고리즘
+  * k 값은 홀수로 설정
+  * 짝수로 설정 시 양측 동점이 발생하여 판별을 하지 못하는 경우가 발생함
 - Grandient Boosting
 - Light BGM
 - Random Forest
