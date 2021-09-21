@@ -29,8 +29,19 @@ tags:
   * Y값이 발생할 확률에 대해 추정하고 결정하는 모델
   * 데이터의 정규분포도에 따라 결과 값에 영향을 받으므로, Standardscaler을 사용하여 fit 진행
   * C(Cost-function) 값을 Hyperparameter로 받음으로써 모델의 적합 여부에 영향을 미침
+  * Cost-fuction은, Sigmoid function 에서 나오는 Cross-entropy function으로,  
+    예측값의 분포와 실제값의 분포를 비교하여 그 차이로 성능 지표로 활용
 - KNN
+  * 
 - Grandient Boosting
 - Light BGM
 - Random Forest
 - SVM
+  * 범주를 나누는 데에 최대의 Margin을 갖는 경계면을 찾는 알고리즘
+  * 데이터가 선형적으로 분리가 되지 않을 경우, 비선형 Mapping을 이용하여 고차원 공간으로 변환하여 분석
+  * Parameter은 C와 gamma 값을 가짐
+  * C 는 경계면의 굴곡을 결정하며, 작을수록 완만해지고 Margin 값이 커짐
+  * gamma 또한 경계면의 굴곡을 결정하며, 작을수록 완만해지고 reach 값이 커짐
+  * 굴곡이 완만할수록 경계면 근처에 있는 데이터가 경계면에 영향을 미치는 영향력은 감소함
+  * gamma 값이 클수록 Over-fitting이 발생할 가능성이 높아짐
+  
