@@ -37,7 +37,16 @@ tags:
   * k 값은 홀수로 설정
   * 짝수로 설정 시 양측 동점이 발생하여 판별을 하지 못하는 경우가 발생함
 - Grandient Boosting
+  * 여러 개의 'weaker learner'를 묶어 강력한 model을 만드는 ensemble기법
+  * 학습을 수행하되, 앞에서 학습한 분류기가 예측이 틀린 데이터에 대해서 올바르게 예측할 수 있도록 다음 분류기에게 가중치(weight)를 부여하면서 학습과 예측 진행한 모델
+  * MSE 혹은 Cross-entropy 값(Y)과 Parameter theta(X)와 비교하여 Y가 최소가 될 때의 X를 찾음(미분 사용)
+  * Training Data만 사용할 경우 Overfitting 이 발생할 가능성이 높아 기존 data에서 split 진행하여 일부는 test data로 사용
 - Light BGM
+  * XGBoost와 유사하나 시간 단축 및 사용 메모리 감소을 위하여 개발된 모델
+  * XGBoost의 경우, 정확하나 다량의 Hyper-parameter가 존재하며
+    GridSearch 및 tuning 진행 시 다량의 메모리 및 시간 소요
+  * XGBoost의 경우, 모든 node를 계산하여 진행(level-wise tree growth)하나  
+    해당 모델은 일부 node에 대해서 분석 진행(leaf--wise tree growth)
 - Random Forest
 - SVM
   * 범주를 나누는 데에 최대의 Margin을 갖는 경계면을 찾는 알고리즘
