@@ -114,7 +114,7 @@ tags:
   ![image](https://user-images.githubusercontent.com/88296152/134271506-3df94819-1009-4d86-9c41-91a16a3891e3.png)
 
 ## 결론
-- Random Forest 모델이 가장 좋은 것으로 확인됨 (AUC : 0.781)
+- Random Forest 모델이 해당 데이터에서는 가장 적합한 것으로 확인됨 (AUC : 0.781)
   ![image](https://user-images.githubusercontent.com/88296152/134271591-3ac0a1a3-f8b4-4c64-b457-dab11a584db4.png)
   
 ## 느낀점 및 한계
