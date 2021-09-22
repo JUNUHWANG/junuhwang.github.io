@@ -14,9 +14,13 @@ tags:
   - Modeling
   - Titanic data
 ---
-# 내용 작성중
-
 ## Project Process 별 자료 (총 3편)
+
+<a href="https://junuhwang.github.io/python/likelion/project/타이타닉 생존 data를 이용한 Model stacking _결과 요약"> 타이타닉 생존 data를 이용한 Model stacking _결과 요약</a>  
+
+<a href="https://junuhwang.github.io/python/likelion/project/타이타닉 생존 data를 이용한 Model stacking (1)_데이터 전처리편"> 타이타닉 생존 data를 이용한 Model stacking (1)_데이터 전처리편 </a>  
+
+<a href="https://junuhwang.github.io/python/likelion/project/타이타닉 생존 data를 이용한 Model stacking (2)_모델링 편"> 타이타닉 생존 data를 이용한 Model stacking (2)_데이터 모델링편 </a>  
 
 ## 데이터 분석 목적
 - 승객의 생존 여부 외 추가 데이터를 이용하여 어떤 변수가 생존에 영향을 미치는지 알아보기 위함
