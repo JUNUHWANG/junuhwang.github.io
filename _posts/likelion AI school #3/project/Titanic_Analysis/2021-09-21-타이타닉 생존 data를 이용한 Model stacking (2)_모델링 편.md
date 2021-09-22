@@ -44,7 +44,7 @@ tags:
   * MSE 혹은 Cross-entropy 값(Y)과 Parameter theta(X)와 비교하여 Y가 최소가 될 때의 X를 찾음(미분 사용)
   * Training Data만 사용할 경우 Overfitting 이 발생할 가능성이 높아 기존 data에서 split 진행하여 일부는 test data로 사용
 
-- Light BGM
+- Light GBM
   * XGBoost와 유사하나 시간 단축 및 사용 메모리 감소을 위하여 개발된 모델
   * XGBoost의 경우, 정확하나 다량의 Hyper-parameter가 존재하며
     GridSearch 및 tuning 진행 시 다량의 메모리 및 시간 소요
@@ -72,22 +72,56 @@ tags:
   ![image](https://user-images.githubusercontent.com/88296152/134264556-192a9ef5-2661-4387-99d2-9702d232794f.png)
   
 - Logistic Regression 
-  * Scaler을 적용한 데이터를 로지스틱 함수에 적용 후 Data fit 진행
+  * Scaler을 적용한 데이터를 Logistic 함수에 적용 후 Data fit 진행
   ![image](https://user-images.githubusercontent.com/88296152/134266365-148aaa5f-9f44-43d6-9f6e-dbc37ffd608e.png)
-  * GridSearch 진행 결과 C의 값은 5, L2 정규화를 진행했을 때에 가장 좋은 모델이 나오는 것을 확인(AUC : 0.817)
+  * GridSearch 진행 결과 C의 값은 5, L2 정규화를 진행했을 때에 가장 좋은 모델이 나오는 것을 확인(Accuracy Score : 0.817)
   ![image](https://user-images.githubusercontent.com/88296152/134266469-817924bb-4b31-4e18-b9ff-17fcb04dc87f.png)
   * Hyperparameter 항목에 C=5를 넣고 다시 학습 시켜 최종 모델 생성
   ![image](https://user-images.githubusercontent.com/88296152/134266882-2df026df-7e3b-450a-8a6b-7cd587a1bc76.png)
 
 - KNN
-  * Logistic Regression 진행한 내용과 동일하게 진행
+  * Scaler을 적용한 데이터를 KNN 함수에 적용 후 Data fit 진행
   ![image](https://user-images.githubusercontent.com/88296152/134267229-8d341eed-fd74-427c-a641-6db7cbaa2ba1.png)
-  * GridSearch 진행 결과 K의 값은 7로 진행했을 때에 가장 좋은 모델이 나오는 것을 확인(AUC : 0.763)
+  * GridSearch 진행 결과 K의 값은 7로 진행했을 때에 가장 좋은 모델이 나오는 것을 확인(Accuracy Score : 0.763)
   ![image](https://user-images.githubusercontent.com/88296152/134267345-36faf89e-523e-49a7-8d3f-331924e7a112.png)
   * Hyperparameter 항목에 K=7를 넣고 다시 학습 시켜 최종 모델 생성
   ![image](https://user-images.githubusercontent.com/88296152/134267436-3cef16ea-3a48-4283-b204-3eec9fa1ca7c.png)
   
 - Grandient Boosting
-  * 
+  * 하기와 같은 설정으로 분석 진행
+  * 층수와 가지치는 수량이 많아질 경우, 처리 속도 저하 및 모델 정확도 감소가 발생할 가능성 있음
+  ![image](https://user-images.githubusercontent.com/88296152/134269324-7cdffc3a-c6bd-488c-9cd2-f6ab4dc01017.png)
+  * 변수 중요도를 확인 후 중요하지 않은 변수들은 제외하고 다시 학습 시켜서 최종 모델 생성 (Accuracy Score : 0.780)
+  ![image](https://user-images.githubusercontent.com/88296152/134269646-8c9deca1-2d18-460c-ad0c-50599add480b.png)
+  ![image](https://user-images.githubusercontent.com/88296152/134269679-e0f63863-3dbf-4995-8708-8a1b0eeb0825.png)
 
+- LightGBM
+  * Gradient Boosting과 유사한 관계로 반복횟수만 400회 넣은 후 분석 진행(Accuracy Score : 0.831)
+  ![image](https://user-images.githubusercontent.com/88296152/134269887-119b4686-6714-4c11-a630-37bf5559d6b0.png)
+
+- Ramdom Forest
+  * Tree 수는 통상적으로 50~1000개를 사용하나, 컴퓨터 환경으로 인하여 100개로 넣고 진행(Accuracy Score : 0.933)
+  ![image](https://user-images.githubusercontent.com/88296152/134271007-618e9f73-2870-4883-bbae-5bab0773aad6.png)
+
+- SVM
+  * Scaler을 적용한 데이터를 SVM 함수에 적용 후 Data fit 진행
+  * C = 1, Gamma = 0.5로 넣고 모델 생성 후 fit 진행(Accuracy Score : 0.730)
+  ![image](https://user-images.githubusercontent.com/88296152/134271229-9288b0d8-f32c-49cb-b74e-e745b1af60e5.png)
+  ![image](https://user-images.githubusercontent.com/88296152/134271278-e8e1554b-235a-40e6-9805-373fcad67e1e.png)
+
+- 최종 AUC 값 그래프화
+  ![image](https://user-images.githubusercontent.com/88296152/134271470-c4c4fc52-36f5-4f8d-925d-b27b20210192.png)
+  ![image](https://user-images.githubusercontent.com/88296152/134271506-3df94819-1009-4d86-9c41-91a16a3891e3.png)
+
+## 결론
+- Random Forest 모델이 가장 좋은 것으로 확인됨 (AUC : 0.781)
+  ![image](https://user-images.githubusercontent.com/88296152/134271591-3ac0a1a3-f8b4-4c64-b457-dab11a584db4.png)
+  
+## 느낀점 및 한계
+- 다른 조의 발표를 들어본 결과 가장 높은 조의 AUC가 0.80 정도 나온 것으로 확인
+- 데이터 전처리를 어떻게 진행하느냐에 따라서 결과 값이 달라짐
+- 회귀 분석 진행 시에는 영향력이 적은 변수를 제거하면 R-square 값이 증가하는 것을 경험하였으나,
+  ML에서는 AUC 및 Accuracy Score가 크게 변화하는 모습을 보이지 않음
+- Gradient Boosting 등 여러 모델에 Grid Search를 진행하고자 하였으나 CPU의 한계로 다운되는 현상 발생
+- Colab 사용 시에도 중간에 다운 및 일일 무료 사용 용량 초과가 되는 현상 발생
 
