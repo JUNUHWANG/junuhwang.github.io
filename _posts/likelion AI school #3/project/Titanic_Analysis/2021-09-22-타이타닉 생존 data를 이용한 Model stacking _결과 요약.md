@@ -1,69 +1,66 @@
 ---
-title: "따릉이 이용 데이터를 이용한 연관 키워드 분석 (1)_Data 전처리 및 지도 시각화 편"
+title: "타이타닉 생존 data를 이용한 Model stacking _결과 요약"
 categories:
   - python
   - likelion
   - project
+  - Data analysis
+  - Modeling
 tags:
   - python
   - likelion
-  - Crawling
-  - API
-  - project
+  - ML
+  - Data analysis
+  - Modeling
+  - Titanic data
 ---
+# 내용 작성중
 
-## Project Process 별 자료 (총 4편)
+## Project Process 별 자료 (총 3편)
 
-<a href="https://junuhwang.github.io/python/likelion/project/따릉이-이용-데이터를-이용한-연관-키워드-분석-결과-요약"> 따릉이 이용 데이터를 이용한 연관 키워드 분석 결과_요약 </a>  
+<a href="https://junuhwang.github.io/python/likelion/project/타이타닉 생존 data를 이용한 Model stacking _결과 요약"> 타이타닉 생존 data를 이용한 Model stacking _결과 요약</a>  
 
-<a href="https://junuhwang.github.io/python/likelion/project/따릉이-이용-데이터를-이용한-연관-키워드-분석-(데이터-전처리-및-자도-시각화)"> 따릉이 이용 데이터를 이용한 연관 키워드 분석 (1)_Data 전처리 및 지도 시각화 편 </a>  
+<a href="https://junuhwang.github.io/python/likelion/project/타이타닉 생존 data를 이용한 Model stacking (1)_데이터 전처리편"> 타이타닉 생존 data를 이용한 Model stacking (1)_데이터 전처리편 </a>  
 
-<a href="https://junuhwang.github.io/python/likelion/project/따릉이-이용-데이터를-이용한-연관-키워드-분석-(2)_이용자-후기-크롤링-편"> 따릉이 이용 데이터를 이용한 연관 키워드 분석 (2)_이용자 후기 크롤링 편 </a>  
+<a href="https://junuhwang.github.io/python/likelion/project/타이타닉 생존 data를 이용한 Model stacking (2)_모델링 편"> 타이타닉 생존 data를 이용한 Model stacking (2)_데이터 모델링편 </a>  
 
-<a href="https://junuhwang.github.io/python/likelion/project/따릉이-이용-데이터를-이용한-연관-키워드-분석_3-키워드-정리-및-시각화"> 따릉이 이용 데이터를 이용한 연관 키워드 분석 (3)_키워드 정리 및 시각화 </a>  
 
 ## 다룰내용
-- 데이터 전처리 및 지도 시각화 진행과정 서술
+- Titanic Data를 이용한 데이터 전처리 및 ML 적용
+
+## 프로젝트 진행 기간
+- 2021-07-01(목) ~ 2021-07-05(월)
 
 ## 이용 데이터
-- 서울시 열린 데이터 광장
-  * 서울특별시 공공자전거 대여이력 정보
-    (http://data.seoul.go.kr/dataList/OA-15182/F/1/datasetView.do)
-  * 서울특별시 공공자전거 대여소 정보
-    (http://data.seoul.go.kr/dataList/OA-13252/F/1/datasetView.do)
+- Titanic 생존 Data
  
 ## 전처리 과정
-- 대여 이력 정보 내 대여일시, 대여소명, 이용시간, 이용거리 data만 사용
-- 이 중, 이동거리가 0인 data는 결측치로 판단하여 제거.
-- 따릉이 대여소 정보의 경우, 중복 data가 있어 해당 데이터 확인 후 제거하여 진행  
-  (set 함수 이용하여 중복 data 확인)
-- 대여 이력 정보와 대여소 정보 data를 inner로 merge 진행
-- 자치구별 대여횟수 및 대여소 별 대여 횟수 count 진행
+- 객실 등급 간 티켓 비용의 차이가 있어 해당 내용에 대해 보정 진행
+  * 확인 도중 동일 티켓번호에 있었고, 동일 티켓번호 보유 인원 수 만큼 비용을 나눔
+- 단체(가족, 지인)여부 확인 후 추가
+  * 동일 티켓 번호 및 동승 가족 수 data를 확인하여 분류 진행
+- 결측치 데이터 추정 후 업데이트
+  * 나이 : 이름 내 호칭을 분류하여 ML 분석 진행 후 적절한 모델 선정, 추가함
+  * 승무원 여부 및 탑승 항구는 생존에 영향을 미치지 않을 것이라 판단, 해당 Data 삭제 후 분석 진행
 
+## 사용 라이브러리
+- pandas : 데이터 불러오기 및 내보내기, 데이터 프레임 자료 전처리에 사용
+- numpy : 분석 중 일부 변수에 대해서는 np.array로 변환 필요
+- sklearn : 각종 ML 분석을 위한 모델과 평가를 하기위한 함수 다수 보유
+- lightgbm : sklearn 내에 해당 모델은 없어 추가적으로 필요
+- matplotlib : 최종 ROC Curve 그래프 시각화
 
-## 시각화 결과
+## 결론
+- Random Forest 모델이 해당 데이터에서는 가장 적합한 것으로 확인됨 (AUC : 0.781)
 
-![image](https://user-images.githubusercontent.com/88296152/133733532-7929273d-4019-4588-a6a2-ffa8acc2e0d9.png)
-<!-- {: width="50%" height="50%"}  
- -->
-- 지도 내 색상 사이는 해당 자치구 내에서 따릉이 대여한 횟수에 따라 색상 차이를 표시함.
-- 대여 횟수가 많은 상위 50개소는 마크로 표시
-- 한강 주변 대여소에서 대부분 대여한 것이 시각적으로 확인됨.
-
-
-## 코드 특이사항
-- 중복값으로 인한 오류 발생
-  * 대여소 정보의 경우, 주소 및 위도/경도가 있어 중복이 없을 것이라 판단하고 사용한 결과 지속적인 오류 발생
-  * Set 함수를 사용하여 전체 길이 비교 후 value_counts 함수를 이용하여 중복 값을 확인 후 제거
-
-![캡처](https://user-images.githubusercontent.com/88296152/133732326-370148a6-3ba8-4479-bdb3-98df1aa8c720.PNG)
-<!-- {: width="50%" height="50%"}  
- -->
-- 지도로 시각화 진행
-  * Groupby를 이용하여 각 대여소 별 대여 data 수집
-  * Groupby 진행 후 size로 순차배열한 결과를 DataFrame으로 변환하면 기존 자료에서 집계 수량이 추가되어 DataFrame 생성  
-    (집계 수량에 대한 열 정보 추가해줘야 함.)
-  * 지도 파일을 불러와 서울 위도/경도를 입력하여 출력 위치를 고정시킴
-  * 자치구 별 대여 횟수 data 전달하여 색상으로 비교 표시
-  * Marker의 경우, 위도/경도에 대한 정보를 전달하고 popup에 대여소 명을 넣어줌  
-    (Marker를 클릭할 때 대여소 명 출력)
+## 느낀점 및 한계
+- 다른 조의 발표를 들어본 결과 가장 높은 조의 AUC가 0.80 정도 나온 것으로 확인
+- 데이터 전처리를 어떻게 진행하느냐에 따라서 적합한 모델 및 AUC 값이 달라지는 것을 확인 
+- 별도 Scaling 작업 진행 없이 분석을 진행하였으나 오히려 AUC가 잘 나온 조도 있었음  
+  이를 통하여 Data scaling 작업을 진행하는 것이 항상 좋은 결과가 나온다는 것이 아님을 깨달음
+- 회귀 분석 진행 시에는 영향력이 적은 변수를 제거하면 R-square 값이 증가하는 것을 경험하였으나, ML에서는 AUC 및 Accuracy Score가 크게 변화하는 모습을 보이지 않음
+- Gradient Boosting 등 여러 모델에 Grid Search를 진행하고자 하였으나 CPU의 한계로 다운되는 현상 발생  
+  Colab 사용 시에도 중간에 다운 및 일일 무료 사용 용량 초과가 되는 현상 발생
+- 팀 프로젝트 기간 중 주말 제외한 3일 중 2일을 데이터 전처리에 사용함
+- 최종 모델 구현하기 전 데이터 전처리 작업이 중요하고 많은 시간이 소요되는 것을 깨달음
+- 시간이 부족하여 팀 내 논의했던 다양한 방법을 시도하지 못하여 아쉬움이 남았음
