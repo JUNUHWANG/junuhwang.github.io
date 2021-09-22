@@ -14,7 +14,6 @@ tags:
   - Modeling
   - Titanic data
 ---
-# 내용 작성중
 
 ## Project Process 별 자료 (총 3편)
 
