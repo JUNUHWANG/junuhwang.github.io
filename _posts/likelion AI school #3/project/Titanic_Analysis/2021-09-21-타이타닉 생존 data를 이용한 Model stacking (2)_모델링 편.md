@@ -70,11 +70,24 @@ tags:
 - 연속형(Numerical), 범주형 항목(Categorical) Scaling 진행
   * 하기와 같이 연속형 변수는 StandardScaler로, 범주형 변수는 Onthotencoder로 Scaling 진행
   ![image](https://user-images.githubusercontent.com/88296152/134264556-192a9ef5-2661-4387-99d2-9702d232794f.png)
+  
 - Logistic Regression 
   * Scaler을 적용한 데이터를 로지스틱 함수에 적용 후 Data fit 진행
   ![image](https://user-images.githubusercontent.com/88296152/134266365-148aaa5f-9f44-43d6-9f6e-dbc37ffd608e.png)
   * GridSearch 진행 결과 C의 값은 5, L2 정규화를 진행했을 때에 가장 좋은 모델이 나오는 것을 확인(AUC : 0.817)
   ![image](https://user-images.githubusercontent.com/88296152/134266469-817924bb-4b31-4e18-b9ff-17fcb04dc87f.png)
+  * Hyperparameter 항목에 C=5를 넣고 다시 학습 시켜 최종 모델 생성
+  ![image](https://user-images.githubusercontent.com/88296152/134266882-2df026df-7e3b-450a-8a6b-7cd587a1bc76.png)
 
+- KNN
+  * Logistic Regression 진행한 내용과 동일하게 진행
+  ![image](https://user-images.githubusercontent.com/88296152/134267229-8d341eed-fd74-427c-a641-6db7cbaa2ba1.png)
+  * GridSearch 진행 결과 K의 값은 7로 진행했을 때에 가장 좋은 모델이 나오는 것을 확인(AUC : 0.763)
+  ![image](https://user-images.githubusercontent.com/88296152/134267345-36faf89e-523e-49a7-8d3f-331924e7a112.png)
+  * Hyperparameter 항목에 K=7를 넣고 다시 학습 시켜 최종 모델 생성
+  ![image](https://user-images.githubusercontent.com/88296152/134267436-3cef16ea-3a48-4283-b204-3eec9fa1ca7c.png)
+  
+- Grandient Boosting
+  * 
 
 
