@@ -17,12 +17,11 @@ tags:
 
 ## Project Process 별 자료 (총 3편)
 
-<a href="https://junuhwang.github.io/python/likelion/project/타이타닉 생존 data를 이용한 Model stacking _결과 요약"> 타이타닉 생존 data를 이용한 Model stacking _결과 요약</a>  
+<a href="https://junuhwang.github.io/python/likelion/project/data%20analysis/modeling/타이타닉-생존-data를-이용한-Model-stacking-_결과-요약/"> 타이타닉 생존 data를 이용한 Model stacking _결과 요약</a>  
 
-<a href="https://junuhwang.github.io/python/likelion/project/타이타닉 생존 data를 이용한 Model stacking (1)_데이터 전처리편"> 타이타닉 생존 data를 이용한 Model stacking (1)_데이터 전처리편 </a>  
+<a href="https://junuhwang.github.io/python/likelion/project/data%20analysis/modeling/타이타닉-생존-data를-이용한-Model-stacking-(1)_데이터-전처리편/"> 타이타닉 생존 data를 이용한 Model stacking (1)_데이터 전처리편 </a>  
 
-<a href="https://junuhwang.github.io/python/likelion/project/타이타닉 생존 data를 이용한 Model stacking (2)_모델링 편"> 타이타닉 생존 data를 이용한 Model stacking (2)_데이터 모델링편 </a>  
-
+<a href="https://junuhwang.github.io/python/likelion/project/data%20analysis/modeling/타이타닉-생존-data를-이용한-Model-stacking-(2)_모델링-편/"> 타이타닉 생존 data를 이용한 Model stacking (2)_데이터 모델링편 </a>  
 
 ## 다룰내용
 - Titanic Data를 이용한 데이터 전처리 및 ML 적용
