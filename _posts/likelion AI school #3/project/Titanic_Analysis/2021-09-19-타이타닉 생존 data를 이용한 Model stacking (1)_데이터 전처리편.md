@@ -81,12 +81,57 @@ tags:
     
     * 위 Data를 이용하여 **age**열 결측치 추가를 위한 회귀분석 진행  
       (8개 모델 중 MSE가 가장 낮은 모델을 이용하여 결측치 추가)
-    ![image](https://user-images.githubusercontent.com/88296152/133920643-b29cbe45-e5c6-4191-93fd-bf59e6b8ed04.png)
+      ```python
+
+      # 1. Age 열 결측치 채우기 
+      # Age 결측치를 채워주는 방법으로, 가지고있는 714개의 데이터 바탕 -> 여러 회귀 모델을 돌려
+      # -> MSE값이 가장 낮은 모델로 얻은 예측치 -> 결측치 값 추가
+
+      import numpy as np
+      from sklearn import linear_model
+      from sklearn import svm
+      from sklearn.metrics import mean_squared_error
+      from sklearn.model_selection import train_test_split
+
+      x_data_withAge = x_data[x_data['Age'].notna()] # age 값이 있는 행만 추린 df
+
+
+      classifiers = [
+          svm.SVR(),
+          linear_model.SGDRegressor(), # MSE < 1. MSE가 가장 작게 나옴. 
+          linear_model.BayesianRidge(),
+          linear_model.LassoLars(),
+          linear_model.ARDRegression(),
+          linear_model.PassiveAggressiveRegressor(),
+          linear_model.TheilSenRegressor(),
+          linear_model.LinearRegression()]
+
+      X = np.array(x_data_withAge[x_data_withAge.columns.difference(['Age'])]) # Age를 제외한 모든 열
+      y = np.array(x_data_withAge['Age'])
+
+      X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.3,random_state=0)
+
+
+      for item in classifiers:
+          print(item)
+          model = item
+          model.fit(X_train, y_train)
+          print('MSE(Training data) : ', mean_squared_error(model.predict(X_train), y_train))
+
+      ```
+      ![image](https://user-images.githubusercontent.com/88296152/134796188-9543931a-baf8-4d36-bba8-78678ff2235e.png)
 
     * 분석 결과 선형회귀 모형이 MSE가 가장 낮게 나와 해당 모델을 이용하여 결측치 추가
-    ![image](https://user-images.githubusercontent.com/88296152/133920748-fc19630c-edd1-4a2f-8ce7-f6707ee62c3f.png)
+      ``` python
+      clf = classifiers[-1]
+
+      age_pred = clf.predict(x_data[x_data.columns.difference(['Age'])])  
+
+      x_data['Age'].fillna(pd.Series(age_pred.flatten()), inplace=True) 
 
 
+      ```
+      
 ## 데이터 전치리 과정 중 느낀 점
 - 팀 프로젝트 기간 중 주말 제외한 3일 중 2일을 데이터 전처리에 사용함
 - 최종 모델 구현하기 전 데이터 전처리 작업이 중요하고 많은 시간이 소요되는 것을 깨달음
