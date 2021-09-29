@@ -1,0 +1,75 @@
+---
+title: "ML DL을 활용한 심장마비 데이터 분석_(1) 데이터 전처리 및 ML"
+categories:
+  - python
+  - likelion
+  - project
+  - Data analysis
+  - ML
+  - DL
+tags:
+  - python
+  - likelion
+  - Data analysis
+  - ML
+  - DL
+---
+# 작성중
+
+## Project Process 별 자료 (총 3편)
+
+
+## 데이터 파악
+- 데이터 column 별 의미
+  * age : 연령
+  * sex : 성별 (1-남성 / 0-여성)
+  * cp : 가슴 통증 유형 (1-협심증, 2-비정형협심증, 3-비관절 통증, 4-무증상)
+  * trestbps : 안정시 혈압
+  * chol - 혈청 콜레스테롤 (mg/dl)
+  * fbs - 공복 혈당 120 mg/dl 이상 (1-true / 0-false)
+  * restecg - 안정시 심전도 결과 (0-2)
+  * thalach - 달성 된 최대 심박수 
+  * exang - 운동으로 인한 협심증 (1-yes / 0-no)
+  * oldpeak - 휴식에 비해 운동에 의해 유발 된 ST 우울증
+  * slp - 최고 운동 ST 세그먼트의 기울기 크기(1,2,3)
+  * ca - 형광 투시로 채색 된 주요 혈관 (0-3)
+  * thal - 달성 된 최대 심박수  
+   ![image](https://user-images.githubusercontent.com/88296152/135204352-08e98cbc-e96d-4ea3-b07b-2b6a43247e4a.png)
+
+- 결측치 및 Outlier 확인
+  * 결측치는 없었음
+  * Chol 항목에서 일부 Outlier가 보였음 → 500 넘는 행은 제거함
+  ```python
+  import pandas as pd
+  import seaborn as sns
+  
+  chol = df.loc[:,['chol']]
+  sns.boxplot(x = 'variable',y = 'value',data = chol.melt())
+  
+  df.drop(df[(df['chol'] > 500)].index,inplace=True)
+  ```
+  ![image](https://user-images.githubusercontent.com/88296152/135206554-3c50a3b1-07d6-427f-b1fc-1e39b7bf8e11.png)
+
+데이터 확인 및 분류 항목 추가
+객실 등급에 따른 티켓 가격 차이에 따른 정확한 티켓 가격 산정 후 추가
+
+pclass와 fare를 비교한 결과 동일 객실 등급에도 가격 차이가 많이 발생한 것으로 확인
+pclass와 ticket, fare 를 Groupby로 묶어서 비교한 결과 동일 티켓 번호 확인
+ticket counts 열을 추가하여 동일한 ticket 항목의 수 집계
+fare을 ticket counts로 나누어 정확한 티켓 가격 집계
+(Fare per ticket 열 추가) image
+단체 항목 추가
+
+지인 / 가족과 함께 온 경우 그룹으로 확인하여 추가
+지인의 경우, ticket에 있는 티켓의 번호가 동일한 사람들을 지인으로 추정함
+(ticket counts 항목이 1 이상이면 지인으로 추정)
+가족의 경우, sibsp와 parch가 1 이상일 경우 그룹으로 산정함
+group 열을 추가하고, ticket counts와 sibsp와 parch 합이 1 이상일 경우 그룹으로 온 것으로 판단
+(혼자 왔을 경우, 위 항목들은 0으로 집계됨.) image
+결측치 Data 추가
+결측치 존재 여부 확인
+
+age, cabin, embarked 3가지 항목에서 결측치 확인
+age 열의 경우, 결측치가 전체의 20% 이므로 잔여 데이터로 추정 가능할 것으로 판단
+cabin 열의 경우, 결측치가 전체이 77%를 차지, 잔여 데이터로 추정이 불가능할 것으로 판단 -> 제거 진행
+embarked 열의 경우, 2개의 data만 결측된 것으로 확인 -> 상관 계수 확인 후 결정 예정
