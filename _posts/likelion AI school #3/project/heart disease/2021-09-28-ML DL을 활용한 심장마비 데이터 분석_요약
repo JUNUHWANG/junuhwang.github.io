@@ -1,0 +1,59 @@
+---
+title: "ML DL을 활용한 심장마비 데이터 분석_요약"
+categories:
+  - python
+  - likelion
+  - project
+  - Data analysis
+  - ML
+  - DL
+tags:
+  - python
+  - likelion
+  - Data analysis
+  - ML
+  - DL
+---
+## 프로젝트 진행 기간
+- 2021-07-19(월) ~ 2021-07-23(금)
+
+## 데이터 분석 목적
+- 수업시간에 배운 ML, DL 활용 목적
+- Kaggle에서 유명 Data 찾아서 진행
+- 환자의 상태를 통하여 미래에 심장마비 발생 여부를 추론하는 모델 생성
+- 멋쟁이 사자처럼 강의 내 팀 프로젝트 진행 내용
+
+## 데이터 출처
+- https://www.kaggle.com/rashikrahmanpritom/heart-attack-analysis-prediction-dataset
+- Kaggle 내 유명한 심장마비 관련 Dataset으로 분석 진행
+- 환자의 상태에 대한 정보와 심장마비 발생 여부에 대한 데이터  
+
+## 사용 라이브러리
+- Numpy
+- Pandas
+- Sklearn
+- Seaborn
+- Tensorflow
+
+## 분석 프로세스
+- 데이터 전처리
+  * Outlier 존재 여부 확인
+  * Data Split 진행
+  * Onehotencoder 및 StandardScaler 적용
+- 원본 데이터로 ML, DL, KerasTuner을 이용한 Parameter 최적화 진행
+- SMOTE를 이용한 oversampling 진행
+- Oversampling 진행한 Data로 ML, DL, GoogleAutoML에 적용
+- 모델링 결과 비교
+
+## 분석결과
+- Oversampling 을 진행한 Data 와 원본데이터 간의 Modeling 결과가 큰 차이를 보이지 않음
+
+## 코드 특징
+
+## 한계
+- Data에 대한 이해도가 부족했음
+  * 의학 전문 용어가 있다보니 인터넷 검색으로 데이터 의미 확인에 한계가 있었음
+  * 데이터 수량이 적어 임시방편으로 SMOTE를 이용하였으나, 통상적이라면 추가적인 데이터 확보가 필요함
+  * Colab에서 KerasTuner을 이용하여 최적화를 진행하였으나 일일 용량문제 및 다운되는 현상이 종종 관찰됨
+  * Google AutoML의 경우 비용 및 충분한 학습시간이 확보 필요
+## 한계
