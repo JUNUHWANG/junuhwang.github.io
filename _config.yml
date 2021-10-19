@@ -20,7 +20,7 @@ title                    : "JUNU의 Blog"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "황준우"
-description              : "TIL 및 기타 관심사항 기록 / Data analysist가 되기 위한 노력"
+description              : "TIL 및 기타 관심사항 기록 / Back-end Engineer 및 Data analysist가 되기 위한 노력"
 url                      : "https://junuhwang.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
