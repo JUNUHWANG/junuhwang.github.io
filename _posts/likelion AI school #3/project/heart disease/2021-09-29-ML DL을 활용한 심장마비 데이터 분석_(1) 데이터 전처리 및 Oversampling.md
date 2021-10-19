@@ -56,6 +56,9 @@ tags:
 - SMOTE 방식으로 Data Oversampling 진행
 - 원본 데이터 중 30%는 Test Data 추출 후 잔여 Data로 Oversampling 진행  
   (SMOTE Data 1,808개 + Test Data 91개 = 총 Data 1,899개)
+  
+## 코드 특이사항
+- SMOTE
   ```python
   from sklearn.datasets import make_classification
   from sklearn.decomposition import PCA
@@ -84,3 +87,9 @@ tags:
   print("결과 샘플 수",train_label.shape)
   ```
   ![image](https://user-images.githubusercontent.com/88296152/137832605-40769c20-5281-4278-8916-dd66080518d2.png)
+ 
+ ## 주의할 점
+ - Data 분석시 최소 10만개의 Dataset이 확보되어야 ML DL 진행이 가능
+ - 원칙적으로는 Data 부족 시 추가 Data를 확보하여 진행해야 함
+ - 위 Data의 경우, Kaggle에서 차용한 Dataset인 관계로 SMOTE를 이용하여 진행
+ - 타 심장병 Data도 있었으나 용어 이해 부족 및 Outlier가 다량으로 보여 위 Data를 선택함
