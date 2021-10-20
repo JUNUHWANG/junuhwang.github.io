@@ -209,6 +209,6 @@ tags:
     model = load_model('/content/saved_model/my_model.h5')
     result = model.evaluate(test_data_scaled, test_label)
     print('loss (cross-entropy) :', result[0])
-    print('test accuracy :', result[1])
+    print('test accuracy :', result[1])  
   
   ```
