@@ -174,6 +174,7 @@ tags:
 - Check Point 설정
   * Callback 함수를 설정하여 Tuner search 진행 시, search 함수 내 추가  
     (참고: https://www.tensorflow.org/tutorials/keras/keras_tuner?hl=ko)  
+
   ```python
   
   # 모델 체크포인트 파일(중간 저장 모델)을 저장할 경로 설정 
@@ -209,4 +210,5 @@ tags:
     result = model.evaluate(test_data_scaled, test_label)
     print('loss (cross-entropy) :', result[0])
     print('test accuracy :', result[1])
+  
   ```
